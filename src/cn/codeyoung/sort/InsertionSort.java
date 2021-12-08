@@ -45,11 +45,42 @@ public class InsertionSort {
         return arr;
     }
 
+    /**
+     * 使用拆半插入优化比较次数
+     * @param array 数组
+     * @param sort 升降序 1升 0降
+     * @param change 是否改变原数组
+     * @return
+     */
+    public static int[] binarySort(int[] array,int sort,int change){
+        int[] arr =  ArrayUtils.copyArray(array,change);
+        int len = arr.length;
+        for (int i = 1; i < len; i++) {
+            //记录要插入的数据
+            int temp = arr[i];
+            int l = 0,r = i-1,m;
+            while (r>=l){
+                m = l + ((r-l)>>1);
+                if (CompareUtils.compare(temp,arr[m],sort)){
+                    l = m + 1;
+                }else {
+                    r = m - 1;
+                }
+            }
+            for (int j = i; j >= l+1; j--) {
+                arr[j] = arr[j-1];
+            }
+            arr[l] = temp;
+        }
+        return arr;
+    }
+
     public static void main(String[] args) {
         System.out.println("Insertion Sort:");
         int[] arr =  GenArray.createIntArr();
         GenArray.beforeSort(arr);
-        InsertionSort.sort(arr);
+        InsertionSort.binarySort(arr,1,1);
         GenArray.afterSort(arr);
+
     }
 }
