@@ -3,10 +3,6 @@ package cn.codeyoung.sort;
 import cn.codeyoung.utils.ArrayUtils;
 import cn.codeyoung.utils.CompareUtils;
 import cn.codeyoung.utils.GenArray;
-import com.sun.org.apache.xerces.internal.impl.xpath.XPath;
-import jdk.nashorn.tools.Shell;
-
-import java.net.StandardProtocolFamily;
 
 /**
  * @Data 11:26 2021/12/8
