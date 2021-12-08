@@ -79,8 +79,9 @@ public class InsertionSort {
         System.out.println("Insertion Sort:");
         int[] arr =  GenArray.createIntArr();
         GenArray.beforeSort(arr);
-        InsertionSort.binarySort(arr,1,1);
+        int[] array = InsertionSort.binarySort(arr,1,0);
+        InsertionSort.sort(arr);
+        GenArray.afterSort(array);
         GenArray.afterSort(arr);
-
     }
 }
