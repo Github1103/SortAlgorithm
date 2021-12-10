@@ -11,6 +11,7 @@ import com.sun.org.apache.bcel.internal.generic.SWAP;
  * @Description
  */
 public class HeapSort {
+    //等价于java中的PriorityQueue
     static class Heapify{
         protected int[] data;
         protected int count;
@@ -20,16 +21,16 @@ public class HeapSort {
         public Heapify(int[] arr,int _sort){
             int n = arr.length;
 
-            data = new int[n+1];
+            data = new int[n];
 
             for (int i = 0;i<n;i++){
-                data[i+1] = arr[i];
+                data[i] = arr[i];
             }
             sort = _sort;
             count = n;
             capacity = n;
 
-            for (int i = count/2;i>=1;i--){
+            for (int i = count>>>1-1;i>=0;i--){
                 shiftDown(i);
             }
         }
@@ -41,9 +42,10 @@ public class HeapSort {
          * @param k
          */
         private void shiftUp(int k){
-            while (k > 1 && CompareUtils.compare(data[k>>1],data[k],sort)){
-                swap(k,k>>1);
-                k>>=1;
+            while (k > 0 && CompareUtils.compare(data[k],data[(k-1)>>>1],sort)){
+                int parent = (k-1)>>>1;
+                swap(k,parent);
+                k = parent;
             }
         }
 
@@ -52,9 +54,9 @@ public class HeapSort {
          * @param k
          */
         private void shiftDown(int k){
-            while (k<<1 <= count){
-                int j = k<<1;
-                if (j+1 <= count && CompareUtils.compare(data[j+1],data[j],sort)){
+            while (k < count>>>1){
+                int j = (k<<1)+1;
+                if (j+1 < count && CompareUtils.compare(data[j+1],data[j],sort)){
                     j++;
                 }
                 if (CompareUtils.compare(data[k],data[j],sort)) break;
@@ -75,9 +77,9 @@ public class HeapSort {
          */
         public void insert(int item){
             assert count + 1 <= capacity;
-            data[count+1] = item;
+            data[count] = item;
             count++;
-            shiftUp(count);
+            shiftUp(count-1);
         }
 
         /**
@@ -85,10 +87,10 @@ public class HeapSort {
          */
         public int poll(){
             assert count > 0;
-            int result = data[1];
-            swap(1,count);
+            int result = data[0];
+            swap(0,count-1);
             count--;
-            shiftDown(1);
+            shiftDown(0);
             return result;
         }
 
