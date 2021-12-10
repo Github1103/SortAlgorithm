@@ -13,11 +13,22 @@ import java.util.Arrays;
  *
  */
 public class CountingSort {
-
+    /**
+     * 整合counting sort
+     * @param arr
+     * @return
+     */
     public static int[] sort(int[] arr){
         return sort(arr,1,1);
     }
 
+    /**
+     * 封装
+     * @param array
+     * @param sort 1升序，0降序
+     * @param change 1改变对象，0不改变原对象
+     * @return
+     */
     public static int[] sort(int[] array,int sort,int change){
         if (change == 1){
             return countingSort(array,sort);
