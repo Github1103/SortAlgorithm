@@ -5,6 +5,7 @@ import cn.codeyoung.utils.CompareUtils;
 import cn.codeyoung.utils.GenArray;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * @Data 15:46 2021/12/6
@@ -34,7 +35,9 @@ public class BubbleSort {
         for (int i = 1; i < len; i++) {
             //用来判断是否有发生交换，如果没有交换说明排序已经有序，则无需再排序直接退出即可
             boolean flag = true;
+            //两两不断地将较大或者较小的数先后交换，每一次循环，都可以将一个数确定到末尾位置固定，循环次数逐渐减少。
             for (int j = 0; j < len - i; j++) {
+                //对比
                 if (CompareUtils.compare(arr[j],arr[j+1],sort)){
                     //交换位置
                     int temp = arr[j];

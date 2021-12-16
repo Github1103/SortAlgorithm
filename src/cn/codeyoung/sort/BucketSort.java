@@ -9,7 +9,7 @@ import java.util.Arrays;
 /**
  * @Data 17:26 2021/12/10
  * @Author ZhangJR
- * @Description
+ * @Description 桶排序
  */
 public class BucketSort {
 
@@ -43,12 +43,13 @@ public class BucketSort {
                 minValue = arr[i];
             }
         }
-
+        //通过这个函数创建映射的桶数量
         int bucketNum =(int)Math.floor((maxValue-minValue)/bucketSize)+ 1;
         int[][] buckets = new int[bucketNum][0];
 
         //映射
         for (int i = 0; i < bucketSize; i++) {
+            //通过这个映射函数将数放入不同的桶中，如果离散度不够均匀，那么就要考虑其他的映射方法。
             int index = (int) Math.floor((arr[i]-minValue)/bucketSize);
             buckets[index] = arrAppend(buckets[index],arr[i]);
         }

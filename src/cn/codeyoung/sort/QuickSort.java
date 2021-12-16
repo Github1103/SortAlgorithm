@@ -8,7 +8,7 @@ import java.util.Arrays;
 /**
  * @Data 14:26 2021/12/9
  * @Author ZhangJR
- * @Description
+ * @Description 快速排序
  */
 public class QuickSort {
     /**
@@ -44,6 +44,8 @@ public class QuickSort {
      * @param sort
      * @return
      */
+    //quickSort分为两个部分，首先选定一个基准指，然后遍历数组，将比基准值小或者大的数转移到基准值之前，和基准值交换位置，交换结束后
+    //基准值就确定了他的位置。然后二分数组，对小的部分再进行quickSort排序。直到分成1为止，直接返回。
     private static int[] quickSort(int[] arr,int left,int right,int sort){
         if (left<right){
             int quickSortIndex = partition(arr,left,right,sort);

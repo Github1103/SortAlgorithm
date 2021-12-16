@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 /**
  * @Data 11:53 2021/12/8
  * @Author ZhangJR
- * @Description
+ * @Description 归并排序
  */
 public class MergeSort {
 
@@ -52,18 +52,21 @@ public class MergeSort {
         if (array.length < 2){
             return array;
         }
+        // 二分数据，然后切割成两个数组分别进行二分，不断二分，直到大小就是2个的时候就不需要分了直接返回。
         int m = 0 + (array.length>>1);
         int[] arrL = Arrays.copyOfRange(array,0,m);
         int[] arrR = Arrays.copyOfRange(array,m,array.length);
         return merge(recursionSort(arrL,sort),recursionSort(arrR,sort),sort);
     }
 
+    //二分后合并。
     private static int[] merge(int[] arrL, int[] arrR,int sort) {
         int lenL = arrL.length,lenR = arrR.length;
         int[] result = new int[lenL+lenR];
         //左右游标用来代替指针
         int cursorL = 0,cursorR = 0;
         int index = 0;
+        //用两个指针分别指向两个数组，然后分别取指针开头的数字，取较大/较小的放入新数组，最后直到两个指针都遍历完成后，然会数组就是有序的。
         while (cursorL<lenL && cursorR <lenR){
             if (CompareUtils.compare(arrL[cursorL],arrR[cursorR],sort)){
                 result[index++] = arrR[cursorR];
@@ -92,6 +95,14 @@ public class MergeSort {
      * @return
      */
     public static int[] iterationSort(int[] array,int sort,int change){
+        //递归起始就是先按照2个一组分，然后两两合并
+        //再按照4个一组分再两两合并，
+        //8个一组两两合并
+        //1. 创建两个指针，分别再0，2的位置，然后往后移动，
+        //2. 创建一个数组用来存放合并后的数据
+        //3. 遍历两个小数组然后，将排序好的数组填充回去。
+        //4. 接着转移指针，到下一个开始的地方。
+        //5. 接着i<<=1，就是乘2，得到下一轮指针间隔，和数组长度。直到遍历结束
         int[] arr = ArrayUtils.copyArray(array,change);
         //定义左指针，右指针
         int cursorL,cursorR;

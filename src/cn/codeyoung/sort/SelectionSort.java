@@ -31,6 +31,7 @@ public class SelectionSort {
     public static int[] sort(int[] array,int sort,int change){
         int[] arr = ArrayUtils.copyArray(array,change);
         int len = array.length;
+        //直接往后遍历找最小或者最大的数字，然后交换到队首
         for (int i = 0; i < len; i++) {
             int maxOrMin = i;
             for (int j = i+1; j < len; j++) {

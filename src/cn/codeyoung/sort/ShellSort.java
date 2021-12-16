@@ -7,7 +7,7 @@ import cn.codeyoung.utils.GenArray;
 /**
  * @Data 11:26 2021/12/8
  * @Author ZhangJR
- * @Description
+ * @Description 希尔排序
  */
 public class ShellSort {
 
@@ -31,6 +31,8 @@ public class ShellSort {
         int[] arr = ArrayUtils.copyArray(array,sort);
         int len = arr.length;
         for (int step = len/2; step>=1; step/=2){
+            //通过分组的插入排序，逐渐达到有序，最后再进行一次插入排序，会减少移动次数。
+            //分组逻辑就是每次/2
             for (int i = step;i<len;i++){
                 int temp = arr[i];
                 int j = i - step;

@@ -37,7 +37,8 @@ public class CountingSort {
             return countingSort(arr,sort);
         }
     }
-
+    //计数排序就创建一个表，然后通过直接的映射，映射到对应的位置
+    //通过一遍遍历，就可以得到最后有序的数组
     private static int[] countingSort(int[] arr, int sort) {
         int[] bucket = new int[100];
 

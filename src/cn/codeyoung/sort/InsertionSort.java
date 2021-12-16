@@ -7,7 +7,7 @@ import cn.codeyoung.utils.GenArray;
 /**
  * @Data 17:21 2021/12/6
  * @Author ZhangJR
- * @Description
+ * @Description 插入排序
  */
 public class InsertionSort {
 
@@ -30,6 +30,7 @@ public class InsertionSort {
     public static int[] sort(int[] array,int sort,int change){
         int[] arr = ArrayUtils.copyArray(array,change);
         int len = arr.length;
+        // 首先将0位置当成有序的，从1开始，往前比较，直到遇到比自己小或者比自己大的数，那么就可以判断找到应该插入的位置，然后插入。边比较数边后移动。
         for (int i = 1; i < len; i++) {
             //记录要插入的数据
             int temp = arr[i];
@@ -55,6 +56,7 @@ public class InsertionSort {
     public static int[] binarySort(int[] array,int sort,int change){
         int[] arr =  ArrayUtils.copyArray(array,change);
         int len = arr.length;
+        //通过二分查找，找到插入的位置，然后还是避免不了移动的次数，只是减少了比较的次数。
         for (int i = 1; i < len; i++) {
             //记录要插入的数据
             int temp = arr[i];

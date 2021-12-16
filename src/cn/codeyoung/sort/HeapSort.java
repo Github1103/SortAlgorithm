@@ -8,7 +8,7 @@ import com.sun.org.apache.bcel.internal.generic.SWAP;
 /**
  * @Data 15:50 2021/12/9
  * @Author ZhangJR
- * @Description
+ * @Description 堆排序
  */
 public class HeapSort {
     //等价于java中的PriorityQueue
@@ -108,6 +108,7 @@ public class HeapSort {
     }
 
     public static int[] sort(int[] array,int sort,int change){
+        //利用小/大根堆的特性，就可以取出顺序和倒序
         Heapify heapify = new Heapify(array,sort);
         if (change == 1){
             for (int i = array.length-1; i >=0; i--) {

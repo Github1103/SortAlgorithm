@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * @Data 11:12 2021/12/12
  * @Author ZhangJR
- * @Description
+ * @Description 基数排序
  */
 public class RadixSort {
 
@@ -45,6 +45,7 @@ public class RadixSort {
     }
 
     private static int[] radixSort(int[] array, int sort) {
+        //依次对数的个位，十位，百位进行排序，最后得到的就是一个有序数组
         int maxDigit = MaxDigit(array);
         int mod = 10;
         int dev = 1;
